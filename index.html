@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blaze Crash History</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="up-right">
+        <a href="https://github.com/Zennos/blaze-crash-history" target="_blank">
+            <img src="github-icon-32px.png" alt="View On GitHub">
+        </a>
+    </div>
+    <div class="middle">
+        <input id="seed_input" type="text" placeholder="Enter the seed.">
+        <div class="options">
+            <label for="amount_input">Amount:</label>
+            <input id="amount_input" type="number" min="0">
+            <label for="good_value_input">Highlight candles above or equal to:</label>
+            <input id="good_value_input" type="number" min="0">
+            <div style="display: inline;">X</div>
+        </div>
+        <div id="loading"></div>
+        <div id="results">
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
