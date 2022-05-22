@@ -61,11 +61,11 @@ span.bad {
 }
 
 #results {
+    display: grid;
     margin-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
     width: 635px;
-    justify-content: space-between;
+    grid-template-columns: repeat(auto-fill, 66px);
+    grid-gap: 5px;
 }
 
 .crash {
