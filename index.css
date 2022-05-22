@@ -11,6 +11,10 @@ body {
     right: 10px;
 }
 
+.hide {
+    display: none;
+}
+
 .middle {
     display: flex;
     flex-direction: column;
@@ -42,6 +46,18 @@ label {
 }
 .options input {
     width: 100px;
+}
+
+#statistics {
+    font-weight: 600;
+}
+
+span.good {
+    color: #04D47C;
+}
+
+span.bad {
+    color: #f57373;
 }
 
 #results {

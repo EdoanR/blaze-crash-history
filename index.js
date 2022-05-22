@@ -1,6 +1,7 @@
 
 const resultsDiv = document.querySelector('#results');
 const loadingDiv = document.querySelector('#loading');
+const statisticsDiv = document.querySelector('#statistics');
 const seedInput = document.querySelector('#seed_input');
 
 const clientSeed = "0000000000000000000415ebb64b0d51ccee0bb55826e43846e5bea777d91966";
@@ -110,12 +111,34 @@ function GetChain(seed, amount = 1000, goodValue = 2) {
         return parseFloat(point);
     });
 
+    let goodCount = 0;
+    let totalCount = chain.length;
+
     for (let value of chain) {
         let multiplier = value == 0 ? 1.0 : value;
 
+        const isGood = multiplier >= goodValue;
+        if (isGood) goodCount++;
+
         const div = document.createElement('div');
         div.textContent = multiplier.toFixed(2) + 'X';
-        div.className = `crash ${multiplier >= goodValue ? 'bom' : 'ruim'}`; 
+        div.className = `crash ${isGood ? 'bom' : 'ruim'}`; 
         resultsDiv.appendChild(div);
     }
+
+    UpdateStatistics(totalCount, goodCount);
+}
+
+function UpdateStatistics(totalCount = 0, goodCount = 0) {
+    if (!totalCount) {
+        statisticsDiv.classList.add('hide');
+        return;
+    }
+
+    statisticsDiv.classList.remove('hide');
+    const lossCount = totalCount - goodCount;
+    const goodPercentage = ( (goodCount / totalCount) * 100 ).toFixed(2);
+    const lossPercentage = ( (lossCount / totalCount) * 100 ).toFixed(2);
+
+    statisticsDiv.innerHTML = `<span class="good">${goodCount}</span>/${totalCount} Wins (<span class="good">${goodPercentage}%</span> Chance) • <span class="bad">${lossCount}</span>/${totalCount} Losses (<span class="bad">${lossPercentage}%</span> Chance)`;
 }
