@@ -62,6 +62,9 @@ function GetChain(seed, amount = 1000, goodValue = 2) {
     resultsDiv.innerHTML = '';
 
     let chain = [seed];
+    amount -= 1;
+
+    if (amount < 0) chain = [];
 
     for (let i = 0; i < amount; i++) {
 
