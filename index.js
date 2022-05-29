@@ -3,6 +3,7 @@ const resultsDiv = document.querySelector('#results');
 const loadingDiv = document.querySelector('#loading');
 const statisticsDiv = document.querySelector('#statistics');
 const seedInput = document.querySelector('#seed_input');
+const candlesCount = document.querySelector('#candles_count');
 
 const clientSeed = "0000000000000000000415ebb64b0d51ccee0bb55826e43846e5bea777d91966";
 
@@ -23,6 +24,10 @@ seedInput.addEventListener('keyup', ev => {
         
         OnInputChange();
     }
+});
+
+$(resultsDiv).selectable({
+    stop: UpdateSelectionWindow
 });
 
 seedInput.addEventListener('input', OnInputChange);
@@ -53,6 +58,8 @@ function OnInputChange() {
             loadingDiv.innerHTML = '';
         }, 500);
     }
+
+    UpdateSelectionWindow();
 
     localStorage.setItem('amount', amount);
     localStorage.setItem('goodValue', goodValue);
@@ -144,4 +151,24 @@ function UpdateStatistics(totalCount = 0, goodCount = 0) {
     const lossPercentage = ( (lossCount / totalCount) * 100 ).toFixed(2);
 
     statisticsDiv.innerHTML = `<span class="good">${goodCount}</span>/${totalCount} Wins (<span class="good">${goodPercentage}%</span> Chance) • <span class="bad">${lossCount}</span>/${totalCount} Losses (<span class="bad">${lossPercentage}%</span> Chance)`;
+}
+
+function UpdateSelectionWindow() {
+    let selectedElements = document.querySelectorAll('.ui-selected');
+    // console.log(selectedElements);
+    if (selectedElements.length == 0) {
+        candlesCount.classList.add('hide');
+        return;
+    } else {
+        candlesCount.classList.remove('hide');
+    }
+
+    let goodElements = document.querySelectorAll('.ui-selected.bom');
+    let count = selectedElements.length;
+    let goodCount = goodElements.length;
+
+    candlesCount.innerHTML = `
+        <div>${count} selected</div>
+        <div><span class="good">${goodCount}</span>/${count}</div>
+    `
 }
