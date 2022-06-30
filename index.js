@@ -3,7 +3,8 @@ const resultsDiv = document.querySelector('#results');
 const loadingDiv = document.querySelector('#loading');
 const statisticsDiv = document.querySelector('#statistics');
 const seedInput = document.querySelector('#seed_input');
-const candlesCount = document.querySelector('#candles_count');
+const updateButton = document.querySelector('#update_button');
+const crashesCount = document.querySelector('#crashes_count');
 
 const clientSeed = "0000000000000000000415ebb64b0d51ccee0bb55826e43846e5bea777d91966";
 
@@ -30,11 +31,13 @@ $(resultsDiv).selectable({
     stop: UpdateSelectionWindow
 });
 
-seedInput.addEventListener('input', OnInputChange);
-amountInput.addEventListener('input', OnInputChange);
-goodValueInput.addEventListener('input', OnInputChange);
+seedInput.addEventListener('input', (ev) => { OnInputChange() });
+amountInput.addEventListener('input', (ev) => { OnInputChange() });
+goodValueInput.addEventListener('input', (ev) => { OnInputChange() });
 
-function OnInputChange() {
+updateButton.addEventListener('click', (ev) => { OnInputChange(true) } );
+
+function OnInputChange(byButton = false) {
     if (!seedInput.value) {
         loadingDiv.innerHTML = '';
         return;
@@ -44,6 +47,10 @@ function OnInputChange() {
 
     let amount = parseInt(amountInput.value);
     if (!amount && amount !== 0) amount = 100;
+
+    HandleUpdateButtonVisibility(amount);
+
+    if (amount >= 5000 && !byButton) return;
 
     let goodValue = parseFloat(goodValueInput.value);
     if (!goodValue && goodValue !== 0) goodValue = 2;
@@ -157,18 +164,26 @@ function UpdateSelectionWindow() {
     let selectedElements = document.querySelectorAll('.ui-selected');
     // console.log(selectedElements);
     if (selectedElements.length == 0) {
-        candlesCount.classList.add('hide');
+        crashesCount.classList.add('hide');
         return;
     } else {
-        candlesCount.classList.remove('hide');
+        crashesCount.classList.remove('hide');
     }
 
     let goodElements = document.querySelectorAll('.ui-selected.bom');
     let count = selectedElements.length;
     let goodCount = goodElements.length;
 
-    candlesCount.innerHTML = `
+    crashesCount.innerHTML = `
         <div>${count} selected</div>
         <div><span class="good">${goodCount}</span>/${count}</div>
     `
+}
+
+function HandleUpdateButtonVisibility(amount) {
+    if (amount >= 5000) {
+        updateButton.classList.remove('hide');
+    } else {
+        updateButton.classList.add('hide');
+    }
 }

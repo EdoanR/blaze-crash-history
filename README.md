@@ -1,7 +1,7 @@
 # blaze-crash-history
-🇧🇷 Mostra as velas anteriores de uma seed.
+🇧🇷 Mostra os crashes anteriores de uma seed.
 
-🇺🇸 Show previous candles from a seed.
+🇺🇸 Show previous crashes from a seed.
 
 ## Onde? | Where?
 ➡ https://zennos.github.io/blaze-crash-history/index.html

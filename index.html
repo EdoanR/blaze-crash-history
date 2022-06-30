@@ -23,20 +23,27 @@
             <img src='https://i.imgur.com/A0I7fFT.png' alt='Paypal' />
         </a>
     </div>
-    <div id="candles_count" class="bottom-left hide"></div>
+    
+    <div id="crashes_count" class="bottom-left hide"></div>
     <div class="middle">
-        <input id="seed_input" type="text" placeholder="Enter the seed.">
+        <a class="top-logo" href="https://blaze.com/pt/games/crash" target=”_blank”>
+            <img src="blaze.png" alt="Blaze.com">
+            <div>Crash History</div>
+        </a>
+        <input id="seed_input" type="text" placeholder="Enter the seed">
         <div class="options">
             <label for="amount_input">Amount:</label>
             <input id="amount_input" type="number" min="0">
-            <label for="good_value_input">Highlight candles above or equal to:</label>
+            <label for="good_value_input">Highlight crashes above or equal to:</label>
             <input id="good_value_input" type="number" min="0">
             <div style="display: inline;">X</div>
         </div>
+        <button id="update_button" class="hide">Update</button>
         <div id="statistics" class="hide"></div>
         <div id="loading"></div>
         <div id="results"></div>
     </div>
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>

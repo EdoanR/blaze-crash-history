@@ -2,7 +2,31 @@ body {
     background-color: #1A242D;
     color: #B8BFC3;
     font-family: SofiaPro,"Roboto",sans-serif;
-    margin-top: 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+a {
+    color: aqua;
+}
+
+button {
+    border: 0;
+    color: #013E01;
+    background-color: #5bd55b;
+    font-weight: 600;
+    font-size: 20px;
+    border-radius: 6px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1bd61b;
+}
+
+button:active {
+    background-color: #18aa18;
 }
 
 .up-right {
@@ -32,6 +56,7 @@ body {
     padding: 1%;
     margin-bottom: 1%;
     margin-left: 1%;
+    border-radius: 10%;
 }
 
 .hide {
@@ -42,6 +67,25 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.top-logo {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+.top-logo img {
+    width: 168px;
+}
+
+.top-logo div {
+    margin-top: 5px;
+    text-align: center;
+    font-weight: 600;
+    color: #E6E7E8;
 }
 
 input {
@@ -71,6 +115,12 @@ label {
     width: 100px;
 }
 
+#update_button {
+    width: 300px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 #statistics {
     font-weight: 600;
     margin-top: 5px;
@@ -82,6 +132,10 @@ span.good {
 
 span.bad {
     color: #f57373;
+}
+
+#loading {
+    margin-top: 10px;
 }
 
 #results {
