@@ -4,7 +4,7 @@
 🇺🇸 Show previous crashes from a seed.
 
 ## Onde? | Where?
-➡ https://zennos.github.io/blaze-crash-history/index.html
+➡ https://edoanr.github.io/blaze-crash-history/index.html
 
 ## Apoie! | Support Me! ❤
 <a href='https://nubank.com.br/pagar/xldsq/rfgW3dODQh' target='_blank'><img height='35' style='border:0px;height:46px;' src='https://logospng.org/download/pix/logo-pix-icone-512.png' border='0' alt='Pix' />
